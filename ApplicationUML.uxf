@@ -1,0 +1,122 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>1010</x><y>580</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Main Application Screen&gt;&gt;
+
+--
+
+--
+Responsibilities
+-- calls different branch areas of
+the application
+-- has different cards on screen to 
+display savings metrics
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>260</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Hamburger Bar&gt;&gt;
+
+--
+Responsibilities
+-- toggle for color scheme
+-- links to google account to save
+information to google sheets for 
+shared access to the financial 
+data to be used across devices</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1250</x><y>290</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Forecasting View&gt;&gt;
+--
+Responsibilities
+-- Shows users month by month
+or year by year amoritization of 
+their savings goals and can be 
+adjusted for different months of
+estimated income for better
+planning
+
+-- calls data access class and gets 
+information to display on screen</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>650</x><y>890</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Accounts View&gt;&gt;
+
+--
+
+Responsibilities
+-- where data is added or removed
+for user account values </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1310</x><y>890</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Future Logic A.I. Aid View&gt;&gt;
+
+--
+
+Responsibilities
+-- use llm to give reccomendations 
+on things that can be done to  save
+and reach goals quicker</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>920</x><y>440</y><w>200</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>15;10;180;140</additional_attributes></element><element><id>Relation</id><coordinates><x>1140</x><y>470</y><w>170</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>145;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>760</y><w>310</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>15;130;290;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1120</x><y>760</y><w>240</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>215;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2140</x><y>140</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Account Data Class&gt;&gt;
+--
+-id: int
+-name: string
+-amount: int
+-type: string
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1090</x><y>500</y><w>100</w><h>30</h></coordinates><panel_attributes>Front End</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1990</x><y>410</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Savings Roadmap (Account Data)&gt;&gt;
+--
+-id: int
+-name: string
+-amount: int
+-type: string
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>890</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Savings Roadmap View&gt;&gt;
+
+--
+
+Responsibilities
+-- where data is added or removed
+for user account values </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1090</x><y>760</y><w>40</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>15;130;20;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2300</x><y>400</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Splash Page Values (Account Data)&gt;&gt;
+--
+-id: int
+-name: string
+-amount: int
+-type: string
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2050</x><y>320</y><w>180</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>15;90;160;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2280</x><y>320</y><w>150</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>125;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2160</x><y>680</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Data Access Class&gt;&gt;
+
+--
+#GetDataFromFolder(filePath: string): bool
+/+AbstractOperation()/
+-- grab data from file path and 
+place information in respective
+data class for processing and display
+#SetDataFromApplicationToFolder(AccountData: [AccountData]): bool
+/+AbstractOperation()/
+-- grab data from file path and 
+place information in respective
+data class for processing and display</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2300</x><y>950</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Store Data to file location on device&gt;&gt;
+
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2020</x><y>950</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Get Data from file location on device&gt;&gt;
+
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>140</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Choose File Location&gt;&gt;
+
+--
+-- have user choose file location for saving data
+-- save choice in persistent data so 
+on launch we can get that choice 
+and push and pull data from there
+-- if data is not found let them
+know we did not find data and will
+start over from scratch if you do 
+not want to start from scratch 
+please choose storage location with 
+proper data
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>250</y><w>200</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>15;10;180;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>380</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Color Scheme Toggle&gt;&gt;
+--
+- operator can choose color scheme
+that they want to use</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>410</y><w>200</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>15;30;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2340</x><y>860</y><w>100</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>75;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2140</x><y>860</y><w>60</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>15;90;40;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1780</x><y>0</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Forecast Data Class&gt;&gt;
+--
+-id: int
+-month: string
+-year: int
+-savings: int
+-extraIncome: int
+-extraExpense: int
+-totalSavings: int
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2250</x><y>320</y><w>40</w><h>380</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>15;10;10;360</additional_attributes></element><element><id>Relation</id><coordinates><x>1870</x><y>180</y><w>310</w><h>630</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>15;10;10;610;290;610</additional_attributes></element><element><id>Relation</id><coordinates><x>1100</x><y>830</y><w>1080</w><h>370</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>1055;10;610;20;600;340;10;350;20;250</additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>840</y><w>1370</w><h>390</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>1345;10;970;40;960;350;10;370;40;240</additional_attributes></element><element><id>Relation</id><coordinates><x>1490</x><y>850</y><w>710</w><h>320</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>685;10;420;50;420;300;10;300;20;230</additional_attributes></element><element><id>Relation</id><coordinates><x>1210</x><y>700</y><w>980</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>955;150;170;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1450</x><y>370</y><w>730</w><h>360</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>705;340;10;320;10;10</additional_attributes></element></diagram>
