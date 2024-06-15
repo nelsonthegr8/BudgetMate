@@ -5,6 +5,14 @@ def routingMainView(page: ft.Page):
     page.adaptive = True
     page.title = "Budget Mate"
 
+    def appBar(title):
+        sideMenuButton=ft.IconButton(icon=ft.icons.MENU_ROUNDED, 
+                                     on_click=lambda _: page.go("/storageLocation_Selection"))
+        bar=ft.AppBar(title=ft.Text(title), bgcolor=ft.colors.SURFACE_VARIANT, 
+                      center_title=True, leading=sideMenuButton)
+
+        return bar
+
     def route_change(route):
         globalVr=globalVariable(page)
         value = globalVr.cStorage
@@ -15,7 +23,7 @@ def routingMainView(page: ft.Page):
             ft.View(
                 "/",
                 [
-                    ft.AppBar(title=ft.Text("Budget Mate"), bgcolor=ft.colors.SURFACE_VARIANT),
+                    appBar("Budget Mate"),
                     getMainMenu(page),
                 ],
             )
@@ -25,7 +33,7 @@ def routingMainView(page: ft.Page):
                 ft.View(
                     "",
                     [
-                        ft.AppBar(title=ft.Text("Location Selection"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        appBar("Location Selection"),
                         ft.ElevatedButton("Back", on_click=lambda _: page.go("/")),
                         getCsvStorageLocationView(page)
                     ],

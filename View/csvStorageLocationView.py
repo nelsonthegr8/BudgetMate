@@ -28,38 +28,46 @@ def csvStorageLocation(page: ft.Page):
                     on_click=lambda _: get_directory_dialog.get_directory_path(),
                     disabled=page.web,
                 )
-    chosenLocatonTxt=ft.Text(width=150)
+    chosenLocatonTxt=ft.Text()
     saveBtn=ft.ElevatedButton(
                     "Save",
                     icon=ft.icons.SAVE_ROUNDED,
-                    on_click=save_directory_data
+                    on_click=save_directory_data,
                 )
     saveBtn.disabled=True
     
     card=ft.Card(
-        content=ft.Container(
-            content=ft.Column(
-                [
+        content=ft.ResponsiveRow([
+            ft.Container(
                     ft.ListTile(
                         title=ft.Text("Please Choose a location on your device where you would like to store your data. The information is being saved as multiple csv files. I recommed a shared folder like google drive etc. So that you can point back to that folder on different devices and have that data shared on all other devices.")
-                    ),
-                    ft.Row(
-                        [chosenLocatonTxt,chooseLocationBtn,saveBtn],
-                        alignment=ft.MainAxisAlignment.END
                     )
-            ]
             ),
-            margin=ft.margin.all(100)
-        ),
-        margin=ft.margin.all(150)
+            ft.Container(
+                chosenLocatonTxt
+            ),
+            ft.Container(
+                ft.ResponsiveRow([
+                        ft.Column(col={"xs": 6,"sm": 3, "md": 2, "xl": 2}, controls=[chooseLocationBtn]),
+                        ft.Column(col={"xs": 6,"sm": 3, "md": 2, "xl": 2}, controls=[saveBtn])
+                        ],
+                        spacing=10,
+                        alignment=ft.MainAxisAlignment.END,
+                        
+                    )
+            )
+        ]),
+        margin=ft.margin.all(5)
     )
 
     page.overlay.extend([get_directory_dialog])
 
     view = ft.SafeArea(
-            card,
-            expand=True
+            ft.ResponsiveRow([
+                ft.Container(
+                    card
+                )
+            ])
         )
     
     return view
-

@@ -22,5 +22,5 @@ def getMainMenu(page: ft.Page):
     return view
 
 def getCsvStorageLocationView(page: ft.Page):
-    view=csvStorageLocation()
+    view=csvStorageLocation(page)
     return view

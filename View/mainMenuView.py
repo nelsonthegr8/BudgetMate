@@ -49,41 +49,144 @@ def mainMenuView(page: ft.Page, netWorthData: nwm,summaryData: scm):
         )
     ]
     
+    lineGraph=ft.LineChart(
+                            data_series=data_1,
+                            border=ft.border.all(3, ft.colors.with_opacity(0.2, ft.colors.ON_SURFACE)),
+                            horizontal_grid_lines=ft.ChartGridLines(
+                                interval=1, color=ft.colors.with_opacity(0.2, ft.colors.ON_SURFACE), width=1
+                            ),
+                            vertical_grid_lines=ft.ChartGridLines(
+                                interval=1, color=ft.colors.with_opacity(0.2, ft.colors.ON_SURFACE), width=1
+                            ),
+                            left_axis=ft.ChartAxis(
+                                labels=leftAxisLabels,
+                                labels_size=40
+                            ),
+                            bottom_axis=ft.ChartAxis(
+                                labels=bottomAxisLabels,
+                                labels_size=32
+                            ),
+                            tooltip_bgcolor=ft.colors.with_opacity(0.8, ft.colors.BLUE_GREY),
+                            #animate=5000,
+                            expand=True
+                        )
+    
+    netWorthHeader=ft.Text("Net Worth: "+str(nwYear),size=32,weight=ft.FontWeight.BOLD)
+
     netWorthCard=ft.Card(
+        content=ft.ResponsiveRow([
+                ft.Container(
+                    ft.Column(col={"xs": 6,"sm": 6, "md": 6, "xl": 6},controls=[netWorthHeader]),
+                    alignment=ft.alignment.bottom_left,
+                    margin=20
+                ),
+                ft.Container(
+                    lineGraph,
+                    margin=20,
+                    alignment=ft.alignment.center
+                )
+            ],
+               alignment=ft.MainAxisAlignment.END 
+            )
+    )
+
+    previewCardNames=["Savings","Debt","Expense Pay","Forecast"]
+
+    def previewCardClicked(card):
+        print(card) 
+        
+
+    savingsCard=ft.Card(
         content=ft.Container(
-            content=ft.Column(
-                [
-                    ft.Text("Net Worth: "+str(nwYear),size=32,weight=ft.FontWeight.BOLD),
-                    ft.LineChart(
-                        data_series=data_1,
-                        border=ft.border.all(3, ft.colors.with_opacity(0.2, ft.colors.ON_SURFACE)),
-                        horizontal_grid_lines=ft.ChartGridLines(
-                            interval=1, color=ft.colors.with_opacity(0.2, ft.colors.ON_SURFACE), width=1
-                        ),
-                        vertical_grid_lines=ft.ChartGridLines(
-                            interval=1, color=ft.colors.with_opacity(0.2, ft.colors.ON_SURFACE), width=1
-                        ),
-                        left_axis=ft.ChartAxis(
-                            labels=leftAxisLabels,
-                            labels_size=40
-                        ),
-                        bottom_axis=ft.ChartAxis(
-                            labels=bottomAxisLabels,
-                            labels_size=32
-                        ),
-                        tooltip_bgcolor=ft.colors.with_opacity(0.8, ft.colors.BLUE_GREY),
-                        #animate=5000,
-                        expand=True
-                    ),
-                ]
-            ),
-            margin=ft.margin.all(100)
+            content=ft.ResponsiveRow([
+                ft.Container(
+                    ft.Column(controls=[ft.Text("Savings")]),
+                    alignment=ft.alignment.center
+                ),
+                ft.Container(
+                    ft.Column(controls=[ft.Text(summaryData.savings)]),
+                    alignment=ft.alignment.center
+                )
+            ],
+            spacing=10
         ),
-        margin=ft.margin.all(150)
+        alignment=ft.alignment.center,
+        on_click=lambda _: previewCardClicked("Savings")
+        )
+    )
+
+    debtCard=ft.Card(
+        content=ft.Container(
+            content=ft.ResponsiveRow([
+                ft.Container(
+                    ft.Column(controls=[ft.Text("Debt")]),
+                    alignment=ft.alignment.center
+                ),
+                ft.Container(
+                    ft.Column(controls=[ft.Text(summaryData.savings)]),
+                    alignment=ft.alignment.center
+                )
+            ],
+            spacing=10
+        ),
+        alignment=ft.alignment.center,
+        on_click=lambda _: previewCardClicked("Debt")
+        )
+    )
+
+    expenseCard=ft.Card(
+        content=ft.Container(
+            content=ft.ResponsiveRow([
+                ft.Container(
+                    ft.Column(controls=[ft.Text("Expense Pay")]),
+                    alignment=ft.alignment.center
+                ),
+                ft.Container(
+                    ft.Column(controls=[ft.Text(summaryData.savings)]),
+                    alignment=ft.alignment.center
+                )
+            ],
+            spacing=10
+        ),
+        alignment=ft.alignment.center,
+        on_click=lambda _: previewCardClicked("Expense")
+        )
+    )
+
+    foreCastCard=ft.Card(
+        content=ft.Container(
+            content=ft.ResponsiveRow([
+                ft.Container(
+                    ft.Column(controls=[ft.Text("Forecast")]),
+                    alignment=ft.alignment.center
+                ),
+                ft.Container(
+                    ft.Column(controls=[ft.Text(summaryData.savings)]),
+                    alignment=ft.alignment.center
+                )
+            ],
+            spacing=10
+        ),
+        alignment=ft.alignment.center,
+        on_click=lambda _: previewCardClicked("Forecast")
+        )
     )
 
     view = ft.SafeArea(
-        netWorthCard,
+        content=ft.Container(
+            content=ft.Column([
+                netWorthCard,
+                ft.ResponsiveRow([
+                    ft.Column(col={"xs": 6,"sm": 6, "md": 3, "xl": 3}, controls=[savingsCard]),
+                    ft.Column(col={"xs": 6,"sm": 6, "md": 3, "xl": 3}, controls=[debtCard]),
+                    ft.Column(col={"xs": 6,"sm": 6, "md": 3, "xl": 3}, controls=[expenseCard]),
+                    ft.Column(col={"xs": 6,"sm": 6, "md": 3, "xl": 3}, controls=[foreCastCard])
+                ])
+            ],
+            spacing=0,
+            ),
+            padding=ft.padding.symmetric(vertical=10),
+        ),
         expand=True
     )
 

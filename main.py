@@ -1,5 +1,6 @@
 import flet as ft
 from View.routingMainView import *
+from View.scratchPadView import *
  
 if __name__ == "__main__":
  

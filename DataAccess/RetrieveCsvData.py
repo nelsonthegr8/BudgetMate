@@ -6,9 +6,21 @@ import csv
 import json
 import globalVariable as gv
 
-def RetrieveCsvMMSummaryData(page: ft.Page):
+def rerouteToStorageLocation(page: ft.Page):
     globalVr=gv.globalVariable(page)
     storageLocation=globalVr.cStorage
+
+    if(storageLocation==None):
+        page.go("/storageLocation_Selection")
+       
+    return storageLocation
+
+
+def RetrieveCsvMMSummaryData(page: ft.Page):
+    storageLocation=rerouteToStorageLocation(page)
+
+    if(storageLocation==None):
+        return
 
     if(os.path.isfile(storageLocation+"mainMenuSummaryData.csv")):
         file1=pd.read_csv(storageLocation+"mainMenuSummaryData.csv")
@@ -28,8 +40,10 @@ def RetrieveCsvMMSummaryData(page: ft.Page):
         return 
     
 def RetrieveCsvMMNetWorthData(page: ft.Page):
-    globalVr=gv.globalVariable(page)
-    storageLocation=globalVr.cStorage
+    storageLocation=rerouteToStorageLocation(page)
+
+    if(storageLocation==None):
+        return
 
     if(os.path.isfile(storageLocation+"mainMenuNetWorthData.csv")):
         file1=pd.read_csv(storageLocation+"mainMenuNetWorthData.csv")
