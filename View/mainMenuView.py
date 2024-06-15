@@ -94,94 +94,38 @@ def mainMenuView(page: ft.Page, netWorthData: nwm,summaryData: scm):
 
     def previewCardClicked(card):
         print(card) 
-        
+    
+    previewCards=[]
 
-    savingsCard=ft.Card(
-        content=ft.Container(
-            content=ft.ResponsiveRow([
-                ft.Container(
-                    ft.Column(controls=[ft.Text("Savings")]),
-                    alignment=ft.alignment.center
-                ),
-                ft.Container(
-                    ft.Column(controls=[ft.Text(summaryData.savings)]),
-                    alignment=ft.alignment.center
+    for i in previewCardNames:
+        previewCards.append(
+            ft.Column(col={"xs": 6,"sm": 6, "md": 3, "xl": 3}, controls=[
+                ft.Card(
+                    content=ft.Container(
+                        content=ft.ResponsiveRow([
+                            ft.Container(
+                                ft.Column(controls=[ft.Text(i)]),
+                                alignment=ft.alignment.center
+                            ),
+                            ft.Container(
+                                ft.Column(controls=[ft.Text(summaryData.savings)]),
+                                alignment=ft.alignment.center
+                            )
+                        ],
+                        spacing=10
+                    ),
+                    alignment=ft.alignment.center,
+                    on_click=lambda _: previewCardClicked(i)
+                    )
                 )
-            ],
-            spacing=10
-        ),
-        alignment=ft.alignment.center,
-        on_click=lambda _: previewCardClicked("Savings")
+            ])
         )
-    )
-
-    debtCard=ft.Card(
-        content=ft.Container(
-            content=ft.ResponsiveRow([
-                ft.Container(
-                    ft.Column(controls=[ft.Text("Debt")]),
-                    alignment=ft.alignment.center
-                ),
-                ft.Container(
-                    ft.Column(controls=[ft.Text(summaryData.savings)]),
-                    alignment=ft.alignment.center
-                )
-            ],
-            spacing=10
-        ),
-        alignment=ft.alignment.center,
-        on_click=lambda _: previewCardClicked("Debt")
-        )
-    )
-
-    expenseCard=ft.Card(
-        content=ft.Container(
-            content=ft.ResponsiveRow([
-                ft.Container(
-                    ft.Column(controls=[ft.Text("Expense Pay")]),
-                    alignment=ft.alignment.center
-                ),
-                ft.Container(
-                    ft.Column(controls=[ft.Text(summaryData.savings)]),
-                    alignment=ft.alignment.center
-                )
-            ],
-            spacing=10
-        ),
-        alignment=ft.alignment.center,
-        on_click=lambda _: previewCardClicked("Expense")
-        )
-    )
-
-    foreCastCard=ft.Card(
-        content=ft.Container(
-            content=ft.ResponsiveRow([
-                ft.Container(
-                    ft.Column(controls=[ft.Text("Forecast")]),
-                    alignment=ft.alignment.center
-                ),
-                ft.Container(
-                    ft.Column(controls=[ft.Text(summaryData.savings)]),
-                    alignment=ft.alignment.center
-                )
-            ],
-            spacing=10
-        ),
-        alignment=ft.alignment.center,
-        on_click=lambda _: previewCardClicked("Forecast")
-        )
-    )
 
     view = ft.SafeArea(
         content=ft.Container(
             content=ft.Column([
                 netWorthCard,
-                ft.ResponsiveRow([
-                    ft.Column(col={"xs": 6,"sm": 6, "md": 3, "xl": 3}, controls=[savingsCard]),
-                    ft.Column(col={"xs": 6,"sm": 6, "md": 3, "xl": 3}, controls=[debtCard]),
-                    ft.Column(col={"xs": 6,"sm": 6, "md": 3, "xl": 3}, controls=[expenseCard]),
-                    ft.Column(col={"xs": 6,"sm": 6, "md": 3, "xl": 3}, controls=[foreCastCard])
-                ])
+                ft.ResponsiveRow(previewCards)
             ],
             spacing=0,
             ),
