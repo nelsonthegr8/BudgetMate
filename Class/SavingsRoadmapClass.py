@@ -1,3 +1,0 @@
-class SavingsRoadmapClass():
-    
-    pass
