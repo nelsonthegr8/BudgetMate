@@ -2,7 +2,7 @@
 ## Description
 - Budget Mate is an application created using .net maui.
 - This is designed to be a mobile application that will help you to financial freedom
-- I made a couple itterations of this project with righteous revenue using swift but wanted to make it again using python and new methods of displaying the information
+- I made a couple itterations of this project with righteous revenue using swift but wanted to make it again using .net maui to allow for muli platform development and take new methods of displaying the information
 - Also throuoght the years the way i approached my budgeting and spreadsheets changed. I decided to make the app reflect that in a more digestible way
   
 ## Use Case
